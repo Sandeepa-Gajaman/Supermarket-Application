@@ -1,0 +1,6 @@
+
+* Image URL for Coca Cola - product-images/cocacola.jpg
+
+* Image URL for Signal Toothpaste - product-images/signalTooth.jpg
+
+* Image URL for Drinking Water - product-images/drinkingWater.jpg
