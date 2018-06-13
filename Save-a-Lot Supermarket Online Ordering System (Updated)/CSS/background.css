@@ -1,0 +1,19 @@
+body{ background-image: url("bg.jpg");}
+
+#bill
+{ margin-bottom:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:20px;}
+
+#address
+{ margin-bottom:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:20px;}
+
+#confirm
+{ margin-top:30px; margin-bottom:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:20px;}
+
+#checkout
+{ margin-top:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:20px;}
+
+#contactUs
+{ margin-top:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:10px;}
+
+#about
+{ margin-top:30px; opacity: 0.95; background: #ffffff; border:#CCC 2px solid; border-radius:10px;}
