@@ -1,0 +1,99 @@
+Database name- illumip_supermarketmanagementsystem
+
+Item table-----------------------------------
+item_code		int(7)
+item_category		varchar(25)
+item_brand		varchar(25)
+item_name		varchar(25)
+item_description	varchar(50)
+item_volume		varchar(10)
+item_quantity		int(6)
+item_unit_price		decimal(9,2)
+
+Stored procedures
+//Use delimiters when creating stored procedures.
+1. Select all items- CREATE PROCEDURE select_all_items( ) BEGIN SELECT * FROM Item; END 
+
+2. Select items by category- delimiter //create procedure select_items_by_category(in category varchar(25)) begin select * from Item where item_category like concat ('%', category, '%'); end// delimiter ;
+
+3. Select items by name- delimiter // create procedure select_items_by_name(in name varchar(25)) begin select * from Item where item_name like concat ('%', name, '%'); end// delimiter ;
+
+4. Select items by code- delimiter // create procedure select_items_by_code(in code int(7)) begin select * from Item where item_code like concat ('%', code, '%'); end// delimiter ;
+
+5. Select items by brand- delimiter // create procedure select_items_by_brand(in brand varchar(25)) begin select * from Item where item_brand like concat ('%', brand, '%'); end// delimiter ;
+
+6. Get the available quantity for a particular item- delimiter // create procedure get_item_inventory_quantity(in param_item_code int(7), out quantity int(6)) begin select item_quantity into quantity from Item where item_code= param_item_code; end// delimiter ;
+
+7. Set the new available quantity for a particular item- delimiter // create procedure set_item_inventory_quantity(in param_item_code int(7), in param_item_quantity int(6)) begin update Item set item_quantity= param_item_quantity where item_code= param_item_code; end// delimiter ;
+
+8. Add a new item- delimiter // create PROCEDURE add_item(in item_category varchar(25), in item_brand varchar(25), in item_name varchar(25), in item_description varchar(50), 
+                         in item_volume varchar(10), in item_unit_price decimal(9,2))
+                         BEGIN
+                         insert into item (item_category, item_brand, item_name, item_description, item_volume, item_unit_price)
+                         VALUES (item_category, item_brand, item_name, item_description, item_volume, item_unit_price);
+                         END //
+                         DELIMITER ;
+9.
+
+10.
+
+11. Remove item-
+
+12. Get the total sales value for a particuler period of time- delimiter //
+create procedure get_total_sales(in start_date char(10), in end_date char(10), out total_sales decimal(9,2))
+begin
+select sum(total_price) into total_sales from order_table where date BETWEEN start_date and end_date;
+END //
+DELIMITER ;
+
+13. delimiter // 
+create PROCEDURE get_item_demand(in sort_by varchar(5))
+BEGIN
+select * from order_table order by sort_by;
+END //
+DELIMITER ;
+
+14. delimiter //
+create PROCEDURE get_total_orders(in start_date char(10), in end_date char(10), out total_orders int(10))
+BEGIN
+select count(order_id) into total_orders from order_table where date between start_date and end_date;
+END //
+DELIMITER ;
+
+15. delimiter //
+create PROCEDURE get_total_units_sold(in start_date char(10), in end_date char(10), out total_units_sold int(15))
+BEGIN
+select sum(order_item_table.quantity) into total_units_sold from order_item_table, order_table
+where order_item_table.order_id= order_table.order_id and order_table.date between start_date and end_date;
+END //
+DELIMITER ;
+
+16. delimiter // 
+create procedure select_supplier_by_name(in name varchar(50)) 
+begin select * from supplier where supplier_name like concat ('%', name, '%'); 
+end// 
+delimiter ;
+
+17. delimiter // 
+create procedure select_supplier_by_code(in code int(7)) 
+begin select * from supplier where supplier_code like concat ('%', code, '%'); 
+end// 
+delimiter ;
+
+18. delimiter // 
+create procedure select_supplier_by_city(in city varchar(25)) 
+begin select * from supplier where supplier_city like concat ('%', city, '%'); 
+end// 
+delimiter ;
+
+19. delimiter // 
+create procedure select_supplier_by_address(in address varchar(100)) 
+begin select * from supplier where supplier_address like concat ('%', address, '%'); 
+end// 
+delimiter ;
+
+Inventory table------------------------------
+
+select item.item_code, item.item_category, item.item_brand, item.item_name, item.item_unit_price from item, order_item_table where order_item_table.item_code= item.item_code order by sort_by
+
+
